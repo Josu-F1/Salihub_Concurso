@@ -48,6 +48,179 @@ PREGUNTAS = [
 
 PREGUNTAS_POR_CLAVE = {p["clave"]: p for p in PREGUNTAS}
 
+DISCIPLINAS = [
+    {"clave": "bienestar", "nombre": "Bienestar General", "icono": "🌱", "coach": "Coach Salihub"},
+    {"clave": "runner", "nombre": "Runner / Atletismo", "icono": "🏃", "coach": "Coach Endurance"},
+    {"clave": "ciclista", "nombre": "Ciclismo / MTB", "icono": "🚴", "coach": "Coach Cadence"},
+    {"clave": "crossfitter", "nombre": "CrossFit / HIIT", "icono": "🏋️", "coach": "Coach Power"},
+]
+
+PREGUNTAS_POR_DISCIPLINA = {
+    "bienestar": PREGUNTAS,
+    "runner": [
+        {**PREGUNTAS[0], "texto": "¿Cómo responden tus piernas y motor hoy?"},
+        {**PREGUNTAS[1], "texto": "¿Sientes pesadez o rigidez muscular al pisar?"},
+        PREGUNTAS[2],
+        PREGUNTAS[3],
+        {**PREGUNTAS[4], "texto": "¿Cuál fue el volumen de kilómetros de ayer?"},
+        PREGUNTAS[5],
+    ],
+    "ciclista": [
+        {**PREGUNTAS[0], "texto": "¿Cómo están los vatios y la energía en las piernas?"},
+        {**PREGUNTAS[1], "texto": "¿Hay sobrecarga en la zona lumbar o rodillas?"},
+        PREGUNTAS[2],
+        PREGUNTAS[3],
+        {**PREGUNTAS[4], "texto": "¿Qué tan dura fue la rodada o fondo de ayer?"},
+        PREGUNTAS[5],
+    ],
+    "crossfitter": [
+        {**PREGUNTAS[0], "texto": "¿Cómo arranca el sistema para el WOD de hoy?"},
+        {**PREGUNTAS[1], "texto": "¿Cómo están los hombros, grip y articulaciones?"},
+        PREGUNTAS[2],
+        PREGUNTAS[3],
+        {**PREGUNTAS[4], "texto": "¿Qué tan intenso estuvo el entreno de ayer?"},
+        PREGUNTAS[5],
+    ],
+}
+
+CARTAS = [
+    # Nivel Óptimo
+    {
+        "codigo": "carta-optima-bienestar",
+        "disciplina": "bienestar",
+        "nivel": "optima",
+        "titulo": "Vitalidad Plena",
+        "frase": "Tu cuerpo está en equilibrio perfecto. ¡Aprovecha este día!",
+        "insight": "Días con alta disposición son ideales para probar nuevos retos o intensidades sostenidas.",
+        "categoria": "Energía",
+        "icono": "⚡",
+    },
+    {
+        "codigo": "carta-optima-runner",
+        "disciplina": "runner",
+        "nivel": "optima",
+        "titulo": "Zancada Fluida",
+        "frase": "El asfalto te espera: motor fresco y pisada ligera.",
+        "insight": "Tu sistema nervioso está optimizado para trabajo de ritmo o tempo run.",
+        "categoria": "Biomecánica",
+        "icono": "🔥",
+    },
+    {
+        "codigo": "carta-optima-ciclista",
+        "disciplina": "ciclista",
+        "nivel": "optima",
+        "titulo": "Vatios Imparables",
+        "frase": "Cadenas listas para una rodada épica.",
+        "insight": "Excelente oxigenación muscular para puertos de montaña o series de alta potencia.",
+        "categoria": "Potencia",
+        "icono": "⚙️",
+    },
+    {
+        "codigo": "carta-optima-crossfitter",
+        "disciplina": "crossfitter",
+        "nivel": "optima",
+        "titulo": "Modo Beast",
+        "frase": "Cuerpo recuperado y listo para romper tu PR.",
+        "insight": "Sistemas energéticos al 100%: enfócate en la técnica en cargas máximas.",
+        "categoria": "Fuerza",
+        "icono": "🏋️",
+    },
+    # Nivel Buena
+    {
+        "codigo": "carta-buena-bienestar",
+        "disciplina": "bienestar",
+        "nivel": "buena",
+        "titulo": "Constancia Activa",
+        "frase": "Buen nivel de reservas para cumplir tus metas del día.",
+        "insight": "El trabajo moderado y constante es el motor de la salud a largo plazo.",
+        "categoria": "Hábitos",
+        "icono": "🌱",
+    },
+    {
+        "codigo": "carta-buena-runner",
+        "disciplina": "runner",
+        "nivel": "buena",
+        "titulo": "Kilómetros Calidad",
+        "frase": "Ritmo crucero activado: suma distancia con control.",
+        "insight": "Mantén la cadencia constante a 170-180 ppm para maximizar eficiencia aeróbica.",
+        "categoria": "Resistencia",
+        "icono": "🏃",
+    },
+    {
+        "codigo": "carta-buena-ciclista",
+        "disciplina": "ciclista",
+        "nivel": "buena",
+        "titulo": "Cadencia Constante",
+        "frase": "Buen flujo en el pedaleo, perfecto para sumar horas de sillín.",
+        "insight": "Recuerda hidratarte con electrólitos cada 20 minutos de ruta.",
+        "categoria": "Nutrición",
+        "icono": "🚴",
+    },
+    {
+        "codigo": "carta-buena-crossfitter",
+        "disciplina": "crossfitter",
+        "nivel": "buena",
+        "titulo": "Ritmo en el WOD",
+        "frase": "Energía sólida para mantener repeticiones limpias.",
+        "insight": "Administra los descansos intencionados entre sets para evitar la fatiga temprana.",
+        "categoria": "Estrategia",
+        "icono": "⏱️",
+    },
+    # Nivel Moderada
+    {
+        "codigo": "carta-moderada-bienestar",
+        "disciplina": "bienestar",
+        "nivel": "moderada",
+        "titulo": "Escucha Inteligente",
+        "frase": "Entrenar con moderación también construye disciplina.",
+        "insight": "Hoy la calidad de los estiramientos vale más que la intensidad de la carga.",
+        "categoria": "Recuperación",
+        "icono": "🧘",
+    },
+    {
+        "codigo": "carta-moderada-runner",
+        "disciplina": "runner",
+        "nivel": "moderada",
+        "titulo": "Rodaje Suave",
+        "frase": "Hoy prima la zona 2 aeróbica: trote regenerativo.",
+        "insight": "Si sientes sobrecarga en sóleos, dedica 5 min a movilidad de tobillo antes de salir.",
+        "categoria": "Prevención",
+        "icono": "👟",
+    },
+    # Nivel Fatiga
+    {
+        "codigo": "carta-fatiga-bienestar",
+        "disciplina": "bienestar",
+        "nivel": "fatiga",
+        "titulo": "Escudo de Regeneración",
+        "frase": "El descanso no es perder un día, es construir el de mañana.",
+        "insight": "Prioriza caminata suave y respiración diafragmática para bajar el cortisol.",
+        "categoria": "Salud",
+        "icono": "🛡️",
+    },
+    {
+        "codigo": "carta-fatiga-runner",
+        "disciplina": "runner",
+        "nivel": "fatiga",
+        "titulo": "Pausa Estratégica",
+        "frase": "Pies descansados previenen periostitis y lesiones de impacto.",
+        "insight": "Sustituye la carrera por foam roller y elevación de piernas 10 minutos.",
+        "categoria": "Fisioterapia",
+        "icono": "🧊",
+    },
+    # Nivel Alerta
+    {
+        "codigo": "carta-alerta-bienestar",
+        "disciplina": "bienestar",
+        "nivel": "alerta",
+        "titulo": "Modo Recarga",
+        "frase": "Señal de batería baja. Tu prioridad absoluta es el reposo.",
+        "insight": "Hidratación profunda, sueño temprano y cero exigencia física excesiva hoy.",
+        "categoria": "Restauración",
+        "icono": "🛑",
+    },
+]
+
 # --- Niveles del índice -------------------------------------------------------------------------
 # De mayor a menor. `desde` es el puntaje mínimo (0-100) para caer en el nivel.
 # `rpe_maximo` es el esfuerzo más alto (escala 0-10) que la demo recomienda ese día.
