@@ -42,3 +42,32 @@ def nivel_de(indice):
 
 def nivel_por_clave(clave):
     return next(n for n in NIVELES if n["clave"] == clave)
+
+
+def elegir_carta(fecha, nivel_clave, disciplina="bienestar", es_dorada=False):
+    """Elige determinísticamente una carta según fecha, nivel y disciplina deportiva."""
+    from .catalogo import CARTAS
+    candidatas = [c for c in CARTAS if c["nivel"] == nivel_clave and c["disciplina"] == disciplina]
+    if not candidatas:
+        candidatas = [c for c in CARTAS if c["nivel"] == nivel_clave and c["disciplina"] == "bienestar"]
+    if not candidatas:
+        candidatas = [c for c in CARTAS if c["nivel"] == nivel_clave]
+    if not candidatas:
+        candidatas = CARTAS[:1]
+
+    idx = fecha.toordinal() % len(candidatas)
+    carta = dict(candidatas[idx])
+    carta["es_dorada"] = es_dorada
+    carta["fecha"] = fecha.isoformat() if hasattr(fecha, "isoformat") else str(fecha)
+    return carta
+
+
+def es_carta_dorada(checkin_actual, historial_previo):
+    """Devuelve True si el índice actual es el máximo de los últimos 30 días (Carta Dorada)."""
+    if not historial_previo:
+        return True
+    indices = [c.indice for c in historial_previo if c.id != getattr(checkin_actual, "id", None)]
+    if not indices:
+        return True
+    return checkin_actual.indice >= max(indices)
+
