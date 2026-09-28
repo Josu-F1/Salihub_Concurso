@@ -39,6 +39,12 @@ class Api {
         await http.post(_uri(ruta), headers: {'Content-Type': 'application/json'}, body: jsonEncode(cuerpo)),
       );
 
+  Future<dynamic> put(String ruta, Map<String, dynamic> cuerpo) async => _leer(
+        await http.put(_uri(ruta), headers: {'Content-Type': 'application/json'}, body: jsonEncode(cuerpo)),
+      );
+
+  Future<dynamic> delete(String ruta) async => _leer(await http.delete(_uri(ruta)));
+
   dynamic _leer(http.Response respuesta) {
     final datos = respuesta.body.isEmpty ? null : jsonDecode(utf8.decode(respuesta.bodyBytes));
     if (respuesta.statusCode >= 400) {
