@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "dev.devfest.salihub_reto"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    // ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
