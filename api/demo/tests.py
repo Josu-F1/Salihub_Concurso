@@ -30,7 +30,9 @@ class ApiTests(APITestCase):
         self.assertEqual(len(r.json()), len(PREGUNTAS))
 
     def test_sin_checkin_no_hay_sesion(self):
-        self.assertIsNone(self.client.get("/api/entrenamiento/sesion-del-dia/").json()["sesion"])
+        r = self.client.get("/api/entrenamiento/sesion-del-dia/").json()
+        self.assertIsNone(r["nivel"])
+        self.assertIsNotNone(r["sesion"])
 
     def test_checkin_una_vez_por_dia(self):
         r = self.client.post("/api/checkin/", {"respuestas": BUENAS}, format="json")
